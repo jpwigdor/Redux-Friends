@@ -28,3 +28,22 @@ export function fetchFriends() {
       });
   };
 }
+
+export function saveFriend(friend) {
+  return dispatch => {
+    dispatch({ type: SAVING_FRIENDS });
+    axios
+      .post(`http://localhost:5000/api/friends`, friend)
+      .then(({ data }) => {
+        //destructering
+        console.log(data);
+        dispatch({
+          type: FRIENDS_SAVED,
+          payload: data
+        });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: `Failed: ${error}` });
+      });
+  };
+}
