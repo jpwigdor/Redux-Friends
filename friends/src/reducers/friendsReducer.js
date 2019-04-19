@@ -22,7 +22,6 @@ const initialState = {
 };
 
 export const friendsReducer = (state = initialState, action) => {
-  console.log(state);
   switch (action.type) {
     case FETCHING_FRIENDS:
       return {

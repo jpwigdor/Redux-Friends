@@ -9,7 +9,6 @@ import { fetchFriends } from "../actions/index";
 class FriendListView extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
   }
 
   componentDidMount() {
@@ -18,7 +17,6 @@ class FriendListView extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     if (this.props.fetchingFriends) {
       // return something here to indicate that you are fetching data
       return <p>FETCHING DATA...</p>;

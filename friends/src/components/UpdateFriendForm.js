@@ -31,7 +31,6 @@ class UpdateFriendForm extends React.Component {
 
   updateFriend = e => {
     e.preventDefault();
-    console.log("update");
     this.props.updateFriend({ ...this.state });
     this.setState({
       name: "",
