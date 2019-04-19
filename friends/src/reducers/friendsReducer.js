@@ -3,6 +3,8 @@ import {
   FRIENDS_FETCHED,
   SAVING_FRIENDS,
   FRIENDS_SAVED,
+  UPDATING_FRIENDS,
+  FRIEND_UPDATED,
   ERROR
 } from "../actions/index";
 
@@ -20,6 +22,7 @@ const initialState = {
 };
 
 export const friendsReducer = (state = initialState, action) => {
+  console.log(state);
   switch (action.type) {
     case FETCHING_FRIENDS:
       return {
@@ -68,6 +71,32 @@ export const friendsReducer = (state = initialState, action) => {
         savingFriends: false,
         updatingFriend: false,
         friendUpdated: false,
+        deletingFriend: false,
+        friendDeleted: false,
+        friends: action.payload,
+        error: null
+      };
+    case UPDATING_FRIENDS:
+      return {
+        fetchingFriends: false,
+        friendsFetched: false,
+        friendsSaved: false,
+        savingFriends: false,
+        updatingFriend: true,
+        friendUpdated: false,
+        deletingFriend: false,
+        friendDeleted: false,
+        friends: [],
+        error: null
+      };
+    case FRIEND_UPDATED:
+      return {
+        fetchingFriends: false,
+        friendsFetched: false,
+        friendsSaved: false,
+        savingFriends: false,
+        updatingFriend: false,
+        friendUpdated: true,
         deletingFriend: false,
         friendDeleted: false,
         friends: action.payload,

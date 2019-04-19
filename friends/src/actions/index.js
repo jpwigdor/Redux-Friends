@@ -47,3 +47,24 @@ export function saveFriend(friend) {
       });
   };
 }
+
+export function updateFriend(friend) {
+  return dispatch => {
+    dispatch({ type: UPDATING_FRIENDS });
+    //destruct id and friend with no id
+    const { id, friendWithNoId } = friend;
+    axios
+      .put(`http://localhost:5000/api/friends/${id}`, friendWithNoId)
+      .then(({ data }) => {
+        //destructering
+        console.log(data);
+        dispatch({
+          type: FRIEND_UPDATED,
+          payload: data
+        });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: `Failed: ${error}` });
+      });
+  };
+}
